@@ -1,1 +1,48 @@
 Sample project to demonstrate Spring 4.x / Spring Security 3.2.x / Servlet 3.x - Java Config
+
+Instructions for running:
+
+Prerequisites:
+
+-Local install of Tomcat 6+ (needs to support servlet 3+)
+
+Note - There is currently a bug in this project that stops the Tomcat plugin from working (think it doesnt like not having a web.xml as a result of the Java config / servlet 3.x usuage.
+
+1) Clone from git
+2) import to eclipse or STS
+3) gradle cleanEclipse eclipse
+4) gradle clean build
+5) Running, either:
+
+5a) copy .war to local tomcat/webapps folder and manually start tomcat.
+
+or
+
+5b) Configure the cargo gradle plugin:
+
+cargo {
+	containerId = 'tomcat7x'
+	port = 8080
+ 
+	local {
+		homeDir = file('/ApplicationServers/apache-tomcat-7.0.41')
+		output = file('/ApplicationServers/apache-tomcat-7.0.41/output.log')
+	}
+}
+
+to point to your local tomcat.
+
+Then you can use:
+
+cargoStartLocal - to deploy
+cargoStopLocal - to kill the local deploy
+
+6) Access:
+
+(guest) http://localhost:8080/spring-security-sample/ - should see welcome message without having to login.
+(user)  http://localhost:8080/spring-security-sample/user - will have to login as either dingeruser or dingeradmin.
+(admin) http://localhost:8080/spring-security-sample/admin - will have to login as dingeradmin only.
+
+There is also a guest user "dinger" who can only access /*, not /user or /admin.
+
+Thanks 

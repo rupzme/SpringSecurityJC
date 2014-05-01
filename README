@@ -14,11 +14,11 @@ Note - There is currently a bug in this project that stops the Tomcat plugin fro
 4) gradle clean build
 5) Running, either:
 
-5a) copy .war to local tomcat/webapps folder and manually start tomcat.
+5a) (manual) copy .war to local tomcat/webapps folder and manually start tomcat.
 
 or
 
-5b) Configure the cargo gradle plugin:
+5b) (via cargo plugin) Configure the cargo gradle plugin:
 
 cargo {
 	containerId = 'tomcat7x'
